@@ -1,3 +1,4 @@
+<!--Patient Dashboard-->
 <!DOCTYPE html>
 <?php 
 include('func.php');  
