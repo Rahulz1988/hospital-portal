@@ -1,4 +1,4 @@
-<!-- Patient Login -->
+<!-- Super Admin login Page -->
 <html>
 <head>
 	<title>HMS</title>
@@ -86,53 +86,28 @@ function checklen()
                     </div>
                     <div class="col-md-9 register-right" style="margin-top: 40px;left: 80px;">
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Register as Patient</h3>
-                                <form method="post" action="func2.php">
-                                <div class="row register-form">
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control"  placeholder="First Name *" name="fname"  onkeydown="return alphaOnly(event);" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" name="email"  />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" id="password" name="password" onkeyup='check();' required/>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="Male" checked>
-                                                    <span> Male </span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="Female">
-                                                    <span>Female </span> 
-                                                </label>
+                            
+                            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Login as Super Admin</h3>
+                                <form method="post" action="func3.php">
+                                    <div class="row register-form">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="User Name *" name="username1" onkeydown="return alphaOnly(event);" required/>
                                             </div>
-                                            <a href="index1.php">Already have an account?</a>
+                                            
+    
+    
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Password *" name="password2" required/>
+                                            </div>
+                                            
+                                            <input type="submit" class="btnRegister" name="adsub" value="Login"/>
                                         </div>
                                     </div>
-                                
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" name="lname" onkeydown="return alphaOnly(event);" required/>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <input type="tel" minlength="10" maxlength="10" name="contact" class="form-control" placeholder="Your Phone *"  />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control"  id="cpassword" placeholder="Confirm Password *" name="cpassword"  onkeyup='check();' required/><span id='message'></span>
-                                        </div>
-                                        <input type="submit" class="btnRegister" name="patsub1" onclick="return checklen();" value="Register"/>
-                                    </div>
-
-                                </div>
-                            </form>
+                                </form>
                             </div>
                         </div>
 
@@ -147,4 +122,6 @@ function checklen()
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-</html>
+    </html>
+
+  
