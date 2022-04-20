@@ -8,9 +8,11 @@
 	if(mysqli_num_rows($result)==1)
     {
         while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-            if($row['otp']==$otp)
+            if($row['otp']==$otp && $row['otp']!=null)
             {
                 $query="update patreg set password='$password' where email='$to_email';";
+	            $result=mysqli_query($con,$query);
+                $query="update patreg set otp= null where email='$to_email';";
 	            $result=mysqli_query($con,$query);
             }
         }

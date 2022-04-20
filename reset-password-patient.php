@@ -11,8 +11,8 @@ function sanitize_my_email($field) {
         return false;
     }
 }
-//$to_email = "sharonpraju@gmail.com";
-$to_email = $_POST['email'];
+$to_email = "sharonpraju@gmail.com";
+//$to_email = $_POST['email'];
 $subject = 'Password Reset';
 $message = 'Your otp for ressting password is '.$otp;
 $headers = 'From: support@souparnika.com';
@@ -20,8 +20,10 @@ $headers = 'From: support@souparnika.com';
 $secure_check = sanitize_my_email($to_email);
 if ($secure_check == false) {
     echo "Invalid input";
-} else { //send email
-    $query="update patreg set otp='$otp' where email='$to_email';";
+} 
+else 
+{ //send email
+    $query="update patreg set otp='$otp' where email='$to_email'";
 	$result=mysqli_query($con,$query);
 	if($result)
     {
