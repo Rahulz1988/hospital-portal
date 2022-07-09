@@ -123,9 +123,6 @@ function checklen()
                                           <div class="form-group">
                                               <input type="text" class="form-control" placeholder="User Name *" name="username1" onkeydown="return alphaOnly(event);" required/>
                                           </div>
-
-
-
                                       </div>
                                       <div class="col-md-6">
                                           <div class="form-group">
