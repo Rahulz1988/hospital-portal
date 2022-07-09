@@ -102,12 +102,13 @@ function checklen()
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="User Name *" name="username3" onkeydown="return alphaOnly(event);" required/>
                                         </div>
+                                        <br><br>
+                                        <a href="forgot-password.html">Forgot Password</a>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="password" class="form-control" placeholder="Password *" name="password3" required/>
                                         </div>
-                                        
                                         <input type="submit" class="btnRegister" name="docsub1" value="Login"/>
                                     </div>
                                 </div>
@@ -123,12 +124,13 @@ function checklen()
                                           <div class="form-group">
                                               <input type="text" class="form-control" placeholder="User Name *" name="username1" onkeydown="return alphaOnly(event);" required/>
                                           </div>
+                                          <br><br>
+                                          <a href="forgot-password.html">Forgot Password</a>
                                       </div>
                                       <div class="col-md-6">
                                           <div class="form-group">
                                               <input type="password" class="form-control" placeholder="Password *" name="password2" required/>
                                           </div>
-
                                           <input type="submit" class="btnRegister" name="adsub" value="Login"/>
                                       </div>
                                   </div>
