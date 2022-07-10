@@ -1,5 +1,7 @@
 <?php
-    $con=mysqli_connect("localhost","root","","myhmsdb");
+error_reporting(0);
+ini_set('display_errors', 0);
+    require_once 'db_conn.php';
     $email = $_POST['email'];
     $otp = $_POST['otp'];
     $role = $_POST['role'];

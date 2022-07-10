@@ -1,53 +1,64 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
 //superadmin login
 session_start();
-$con=mysqli_connect("localhost","root","","myhmsdb");
+require_once 'db_conn.php';
 if(isset($_POST['adsub'])){
 	$username=$_POST['username1'];
 	$password=$_POST['password2'];
-	$query="select * from admintb where username='$username' and password='$password';";
+	$query="select * from admintb where username='$username';";
 	$result=mysqli_query($con,$query);
-	if(mysqli_num_rows($result)==1)
-	{
-		$_SESSION['username']=$username;
+	$row=mysqli_fetch_array($result);
+  	$hash=$row['password'];
+  	if (password_verify($password, $hash)) {
+		$_SESSION['admin'] = $row['username'];
+  	  	$_SESSION['username'] = $row['username'];
 		header("Location:admin-panel2.php");
-	}
-	else
-		// header("Location:error2.php");
-		echo("<script>alert('Invalid Username or Password. Try Again!');
-          window.location.href = 'index.php';</script>");
-}
-if(isset($_POST['update_data']))
-{
-	$contact=$_POST['contact'];
-	$status=$_POST['status'];
-	$query="update appointmenttb set payment='$status' where contact='$contact';";
-	$result=mysqli_query($con,$query);
-	if($result)
-		header("Location:updated.php");
+  	} else {
+  	  echo("<script>alert('Invalid Username or Password. Try Again!');
+          window.location.href = 'index2.php';</script>");
+  	}
 }
 
-
-
-
-function display_docs()
-{
-	global $con;
-	$query="select * from doctb";
-	$result=mysqli_query($con,$query);
-	while($row=mysqli_fetch_array($result))
+if(isset($_SESSION['admin'])){
+	//if user logged in
+	if(isset($_POST['update_data']))
 	{
-		$name=$row['name'];
-		# echo'<option value="" disabled selected>Select Doctor</option>';
-		echo '<option value="'.$name.'">'.$name.'</option>';
+		$contact=$_POST['contact'];
+		$status=$_POST['status'];
+		$query="update appointmenttb set payment='$status' where contact='$contact';";
+		$result=mysqli_query($con,$query);
+		if($result)
+			header("Location:updated.php");
+	}
+
+
+
+
+	function display_docs()
+	{
+		global $con;
+		$query="select * from doctb";
+		$result=mysqli_query($con,$query);
+		while($row=mysqli_fetch_array($result))
+		{
+			$name=$row['name'];
+			# echo'<option value="" disabled selected>Select Doctor</option>';
+			echo '<option value="'.$name.'">'.$name.'</option>';
+		}
+	}
+
+	if(isset($_POST['doc_sub']))
+	{
+		$name=$_POST['name'];
+		$query="insert into doctb(name)values('$name')";
+		$result=mysqli_query($con,$query);
+		if($result)
+			header("Location:adddoc.php");
 	}
 }
-
-if(isset($_POST['doc_sub']))
+else
 {
-	$name=$_POST['name'];
-	$query="insert into doctb(name)values('$name')";
-	$result=mysqli_query($con,$query);
-	if($result)
-		header("Location:adddoc.php");
+  header("Location:index2.php");
 }

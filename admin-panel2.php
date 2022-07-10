@@ -1,7 +1,19 @@
 <!--Super Admin Dashboard-->
 <!DOCTYPE html>
-<?php 
-$con=mysqli_connect("localhost","root","","myhmsdb");
+
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start();
+if(isset($_SESSION['admin'])){
+  //if user logged in
+  //do nothing
+}
+else
+{
+  header("Location:index2.php");
+}
+require_once 'db_conn.php';
 
 include('newfunc.php');
 
@@ -12,7 +24,8 @@ if(isset($_POST['docsub']))
   $demail=$_POST['demail'];
   $spec=$_POST['special'];
   $docFees=$_POST['docFees'];
-  $query="insert into doctb(username,password,email,spec,docFees)values('$doctor','$dpassword','$demail','$spec','$docFees')";
+  $hash = password_hash($dpassword, PASSWORD_DEFAULT);
+  $query="insert into doctb(username,password,email,spec,docFees)values('$receptionist','$hash','$demail','$spec','$docFees')";
   $result=mysqli_query($con,$query);
   if($result)
     {
@@ -35,6 +48,34 @@ if(isset($_POST['docsub1']))
   }
 }
 
+if(isset($_POST['recsub']))
+{
+  $receptionist=$_POST['receptionist'];
+  $recpassword=$_POST['recpassword'];
+  $recemail=$_POST['recemail'];
+  $hash = password_hash($recpassword, PASSWORD_DEFAULT);
+  $query="insert into recptb(username,password,email)values('$receptionist','$hash','$recemail')";
+  $result=mysqli_query($con,$query);
+  if($result)
+  {
+      echo "<script>alert('Receptionist added successfully!');</script>";
+  }
+}
+
+
+if(isset($_POST['recsub1']))
+{
+  $recemail=$_POST['recemail'];
+  $query="delete from recptb where email='$recemail';";
+  $result=mysqli_query($con,$query);
+  if($result)
+    {
+      echo "<script>alert('Receptionist removed successfully!');</script>";
+  }
+  else{
+    echo "<script>alert('Unable to delete!');</script>";
+  }
+}
 
 ?>
 <html lang="en">
@@ -134,11 +175,14 @@ if(isset($_POST['docsub1']))
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-dash-list" data-toggle="list" href="#list-dash" role="tab" aria-controls="home">Dashboard</a>
       <a class="list-group-item list-group-item-action" href="#list-doc" id="list-doc-list"  role="tab"    aria-controls="home" data-toggle="list">Doctor List</a>
+      <a class="list-group-item list-group-item-action" href="#list-rec" id="list-rec-list"  role="tab"    aria-controls="home" data-toggle="list">Receptionist List</a>
       <a class="list-group-item list-group-item-action" href="#list-pat" id="list-pat-list"  role="tab" data-toggle="list" aria-controls="home">Patient List</a>
       <a class="list-group-item list-group-item-action" href="#list-app" id="list-app-list"  role="tab" data-toggle="list" aria-controls="home">Appointment Details</a>
       <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list"  role="tab" data-toggle="list" aria-controls="home">Prescription List</a>
       <a class="list-group-item list-group-item-action" href="#list-settings" id="list-adoc-list"  role="tab" data-toggle="list" aria-controls="home">Add Doctor</a>
       <a class="list-group-item list-group-item-action" href="#list-settings1" id="list-ddoc-list"  role="tab" data-toggle="list" aria-controls="home">Delete Doctor</a>
+      <a class="list-group-item list-group-item-action" href="#list-settings2" id="list-arec-list"  role="tab" data-toggle="list" aria-controls="home">Add Receptionist</a>
+      <a class="list-group-item list-group-item-action" href="#list-settings3" id="list-drec-list"  role="tab" data-toggle="list" aria-controls="home">Delete Receptionist</a>
       <a class="list-group-item list-group-item-action" href="#list-mes" id="list-mes-list"  role="tab" data-toggle="list" aria-controls="home">Queries</a>
       
     </div><br>
@@ -252,15 +296,13 @@ if(isset($_POST['docsub1']))
 
 
       <div class="tab-pane fade" id="list-doc" role="tabpanel" aria-labelledby="list-home-list">
-              
-
               <div class="col-md-8">
-      <form class="form-group" action="doctorsearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
-    </div>
+              <form class="form-group" action="doctorsearch.php" method="post">
+                <div class="row">
+                <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
+                <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
+              </form>
+              </div>
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -273,7 +315,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
                     $query = "select * from doctb";
                     $result = mysqli_query($con,$query);
@@ -290,6 +332,39 @@ if(isset($_POST['docsub1']))
                         <td>$email</td>
                         <td>$password</td>
                         <td>$docFees</td>
+                      </tr>";
+                    }
+
+                  ?>
+                </tbody>
+              </table>
+        <br>
+      </div>
+
+      <div class="tab-pane fade" id="list-rec" role="tabpanel" aria-labelledby="list-home-list">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Receptionist Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    require_once 'db_conn.php';
+                    global $con;
+                    $query = "select * from recptb";
+                    $result = mysqli_query($con,$query);
+                    while ($row = mysqli_fetch_array($result)){
+                      $username = $row['username'];
+                      $email = $row['email'];
+                      $password = $row['password'];
+                      
+                      echo "<tr>
+                        <td>$username</td>
+                        <td>$email</td>
+                        <td>$password</td>
                       </tr>";
                     }
 
@@ -324,7 +399,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
                     $query = "select * from patreg";
                     $result = mysqli_query($con,$query);
@@ -380,7 +455,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
                     $query = "select * from prestb";
                     $result = mysqli_query($con,$query);
@@ -452,7 +527,7 @@ if(isset($_POST['docsub1']))
                 <tbody>
                   <?php 
 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
 
                     $query = "select * from appointmenttb;";
@@ -526,7 +601,7 @@ if(isset($_POST['docsub1']))
       </div>
 
       <div class="tab-pane fade" id="list-settings1" role="tabpanel" aria-labelledby="list-settings1-list">
-        <form class="form-group" method="post" action="admin-panel1.php">
+        <form class="form-group" method="post" action="admin-panel2.php">
           <div class="row">
           
                   <div class="col-md-4"><label>Email ID:</label></div>
@@ -538,17 +613,47 @@ if(isset($_POST['docsub1']))
       </div>
 
 
+
+      <div class="tab-pane fade" id="list-settings2" role="tabpanel" aria-labelledby="list-settings-list">
+        <form class="form-group" method="post" action="admin-panel2.php">
+          <div class="row">
+                  <div class="col-md-4"><label>Receptionist Name:</label></div>
+                  <div class="col-md-8"><input type="text" class="form-control" name="receptionist" onkeydown="return alphaOnly(event);" required></div><br><br>
+                  <br><br>
+                  <div class="col-md-4"><label>Email ID:</label></div>
+                  <div class="col-md-8"><input type="email"  class="form-control" name="recemail" required></div><br><br>
+                  <div class="col-md-4"><label>Password:</label></div>
+                  <div class="col-md-8"><input type="password" class="form-control" name="recpassword" required></div><br><br>
+                </div>
+          <input type="submit" name="recsub" value="Add Receptionist" class="btn btn-primary">
+        </form>
+      </div>
+
+      <div class="tab-pane fade" id="list-settings3" role="tabpanel" aria-labelledby="list-settings1-list">
+        <form class="form-group" method="post" action="admin-panel2.php">
+          <div class="row">
+          
+                  <div class="col-md-4"><label>Email ID:</label></div>
+                  <div class="col-md-8"><input type="email"  class="form-control" name="recemail" required></div><br><br>
+                  
+                </div>
+          <input type="submit" name="recsub1" value="Delete Receptionist" class="btn btn-primary" onclick="confirm('do you really want to delete?')">
+        </form>
+      </div>
+
+
+
        <div class="tab-pane fade" id="list-attend" role="tabpanel" aria-labelledby="list-attend-list">...</div>
 
-       <div class="tab-pane fade" id="list-mes" role="tabpanel" aria-labelledby="list-mes-list">
+        <div class="tab-pane fade" id="list-mes" role="tabpanel" aria-labelledby="list-mes-list">
 
-         <div class="col-md-8">
-      <form class="form-group" action="messearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="mes_contact" placeholder="Enter Contact" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="mes_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
-    </div>
+          <div class="col-md-8">
+            <form class="form-group" action="messearch.php" method="post">
+              <div class="row">
+              <div class="col-md-10"><input type="text" name="mes_contact" placeholder="Enter Contact" class = "form-control"></div>
+              <div class="col-md-2"><input type="submit" name="mes_search_submit" class="btn btn-primary" value="Search"></div></div>
+            </form>
+          </div>
         
               <table class="table table-hover">
                 <thead>
@@ -562,7 +667,7 @@ if(isset($_POST['docsub1']))
                 <tbody>
                   <?php 
 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
 
                     $query = "select * from contact;";
@@ -583,8 +688,8 @@ if(isset($_POST['docsub1']))
                     <?php } ?>
                 </tbody>
               </table>
-        <br>
-      </div>
+          <br>
+        </div>
 
 
 

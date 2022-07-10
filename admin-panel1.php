@@ -1,7 +1,19 @@
 <!--Reception Dashboard-->
 <!DOCTYPE html>
-<?php 
-$con=mysqli_connect("localhost","root","","myhmsdb");
+
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start();
+if(isset($_SESSION['receptionist'])){
+  //if user logged in
+  //do nothing
+}
+else
+{
+  header("Location:index3.php");
+}
+require_once 'db_conn.php';
 
 include('newfunc.php');
 ?>
@@ -221,7 +233,7 @@ include('newfunc.php');
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
                     $query = "select * from doctb";
                     $result = mysqli_query($con,$query);
@@ -272,7 +284,7 @@ include('newfunc.php');
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
                     $query = "select * from patreg";
                     $result = mysqli_query($con,$query);
@@ -328,7 +340,7 @@ include('newfunc.php');
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
                     $query = "select * from prestb";
                     $result = mysqli_query($con,$query);
@@ -400,7 +412,7 @@ include('newfunc.php');
                 <tbody>
                   <?php 
 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
 
                     $query = "select * from appointmenttb;";
@@ -467,7 +479,7 @@ include('newfunc.php');
                 <tbody>
                   <?php 
 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once 'db_conn.php';
                     global $con;
 
                     $query = "select * from contact;";

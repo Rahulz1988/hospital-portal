@@ -1,6 +1,17 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start();
+if(isset($_SESSION['admin']) || isset($_SESSION['receptionist']) || isset($_SESSION['doctor']) || isset($_SESSION['patient'])){
+  //if user logged in
+  //do nothing
+}
+else
+{
+  header("Location:index1.php");
+}
 // session_start();
-$con=mysqli_connect("localhost","root","","myhmsdb");
+require_once 'db_conn.php';
 // if(isset($_POST['submit'])){
 //  $username=$_POST['username'];
 //  $password=$_POST['password'];

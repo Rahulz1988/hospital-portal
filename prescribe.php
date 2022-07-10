@@ -1,5 +1,15 @@
-<!DOCTYPE html>
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start();
+if(isset($_SESSION['doctor'])){
+  //if user logged in
+  //do nothing
+}
+else
+{
+  header("Location:index3.php");
+}
 include('func1.php');
 $pid='';
 $ID='';
@@ -38,14 +48,10 @@ if(isset($_POST['prescribe']) && isset($_POST['pid']) && isset($_POST['ID']) && 
     else{
       echo "<script>alert('Unable to process your request. Try again!');</script>";
     }
-  // else{
-  //   echo "<script>alert('GET is not working!');</script>";
-  // }initial
-  // enga error?
 }
 
 ?>
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
 

@@ -1,3 +1,16 @@
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start();
+if(isset($_SESSION['admin'])){
+  //if user logged in
+  //do nothing
+}
+else
+{
+  header("Location:index1.php");
+}
+?>
 <!DOCTYPE html>
  <?php #include("func.php");?>
 <html>
