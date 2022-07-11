@@ -105,7 +105,7 @@ include("header.php");
                   <a href="#">Don't have an account?</a>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                  <a href="index1.php" class="btn btn-primary">Register New Account</a>
+                  <a href="index.php" class="btn btn-primary">Register New Account</a>
                 </div>
               </form>
             </center>
