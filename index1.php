@@ -83,14 +83,14 @@ include("header.php");
                 <br>
               <h3 style="margin-top: 10%">Patient Login</h3><br>
               <form class="form-group" method="POST" action="func.php">
-                <div class="row" style="margin-top: 10%">
+                <div class="row">
                   <div class="col-md-4"><label>Email-ID: </label></div>
                   <div class="col-md-8"><input type="text" name="email" class="form-control" placeholder="enter email ID" required/></div><br><br>
-                  <div class="col-md-4" style="margin-top: 8%"><label>Password: </label></div>
-                  <div class="col-md-8" style="margin-top: 8%"><input type="password" class="form-control" name="password2" placeholder="enter password" required/></div><br><br><br>
+                  <div class="col-md-4 mt-3"><label>Password: </label></div>
+                  <div class="col-md-8 mt-3"><input type="password" class="form-control" name="password2" placeholder="enter password" required/></div><br><br><br>
                 </div>
                 <div class="row">
-                 <div class="col-md-4"  style="padding-left: 160px;margin-top: 10%">
+                 <div class="col-md-4 mt-3"  style="padding-left: 160px;">
                     <center>
                       <input type="submit" id="inputbtn" name="patsub" value="Login" class="btn btn-primary">
                     </center>
@@ -105,7 +105,7 @@ include("header.php");
                   <a href="#">Don't have an account?</a>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                  <a href="index1.php" class="btnRegister">Register New Account</a>
+                  <a href="index1.php" class="btn btn-primary">Register New Account</a>
                 </div>
               </form>
             </center>
