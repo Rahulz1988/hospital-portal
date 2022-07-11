@@ -113,7 +113,9 @@ function checklen()
                                                     <span>Female </span> 
                                                 </label>
                                             </div>
-                                            <a href="index1.php">Already have an account?</a>
+                                            <a href="#">Already have an account?</a>
+                                            <br>
+                                            <a href="index1.php" class="btnRegister">Login</a>
                                             <br>
                                             <a href="forgot-password.html">Forgot Password</a>
                                         </div>

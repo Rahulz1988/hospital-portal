@@ -100,6 +100,10 @@ include("header.php");
                 </div>
                 <div class="d-flex justify-content-center mt-3">
                   <a href="forgot-password.html">Forgot Password</a>
+                  <br>
+                  <a href="#">Don't have an account?</a>
+                  <br>
+                  <a href="index1.php" class="btnRegister">Register New Account</a>
                 </div>
               </form>
             </center>
