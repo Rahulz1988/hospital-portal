@@ -99,7 +99,7 @@ include("header.php");
                     <a href="index.php" class="btn btn-primary">Back</a></div> -->
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                  <a href="forgot-password.html">Forgot Password</a>
+                  <a href="forgot-password.html">Forgot Password ?</a>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
                   <a href="#">Don't have an account?</a>

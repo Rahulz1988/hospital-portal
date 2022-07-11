@@ -117,7 +117,7 @@ function checklen()
                                             <br>
                                             <a href="index1.php" class="btn btn-primary">Login</a>
                                             <br>
-                                            <a href="forgot-password.html">Forgot Password</a>
+                                            <a href="forgot-password.html">Forgot Password ?</a>
                                         </div>
                                     </div>
                                 
