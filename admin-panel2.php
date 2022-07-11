@@ -25,7 +25,7 @@ if(isset($_POST['docsub']))
   $spec=$_POST['special'];
   $docFees=$_POST['docFees'];
   $hash = password_hash($dpassword, PASSWORD_DEFAULT);
-  $query="insert into doctb(username,password,email,spec,docFees)values('$receptionist','$hash','$demail','$spec','$docFees')";
+  $query="insert into doctb(username,password,email,spec,docFees)values('$doctor','$hash','$demail','$spec','$docFees')";
   $result=mysqli_query($con,$query);
   if($result)
     {

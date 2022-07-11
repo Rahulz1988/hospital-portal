@@ -8,8 +8,7 @@ ini_set('display_errors', 0);
     {
         $subject = "OTP to reset password";
 
-        $message = $otp."<b>is the OTP for resetting your Souparnika account password.</b>";
-        $message .= "<h1>This is headline.</h1>";
+        $message = $otp."<b> is the OTP for resetting your Souparnika account password.</b>";
 
         $header = "From:noreply@souparnikahealth.com \r\n";
         $header .= "MIME-Version: 1.0\r\n";
@@ -61,12 +60,12 @@ ini_set('display_errors', 0);
                                                             Please Check your email also in spam folder to get the otp. 
                                                         </p>
                                                         <form action="verify-otp.php" method="POST">
-                                                            <input type="text" placeholder="Enter OTP" name="otp" style="border-color:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px; required">
-                                                            <input type="text" placeholder="New Password" name="password" style="border-color:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px; required">
+                                                            <input type="text" placeholder="Enter OTP" name="otp" style="border-color:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px; required">
+                                                            <input type="text" placeholder="New Password" name="password" style="border-color:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px; required">
                                                             <input type="text" name="email" value="'.$email.'" hidden readonly required">
                                                             <input type="text" name="role" value="'.$role.'" hidden readonly required">
                                                             <br>
-                                                            <input type="submit" style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;" vlaue="Reset Password">
+                                                            <input type="submit" style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;" vlaue="Reset Password">
                                                         </form>
                                                     </td>
                                                 </tr>

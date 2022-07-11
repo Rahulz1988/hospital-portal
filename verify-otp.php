@@ -6,6 +6,7 @@ ini_set('display_errors', 0);
     $otp = $_POST['otp'];
     $role = $_POST['role'];
     $password = $_POST['password'];
+    $password = password_hash($password, PASSWORD_DEFAULT);
     if($role=="receptionist")
     {
         $query1="select otp from recptb where email='$email'";
