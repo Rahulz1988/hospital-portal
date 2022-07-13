@@ -80,14 +80,14 @@ function checklen()
 <div class="container register" style="font-family: 'IBM Plex Sans', sans-serif;">
                 <div class="row">
                     <div class="col-md-3 register-left" style="margin-top: 10%;right: 5%">
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <img src="images\logo.png" alt=""/>
                         <h3>Tune your body and mind with Souparnika</h3>
                        
                     </div>
                     <div class="col-md-9 register-right" style="margin-top: 40px;left: 80px;">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Register as Patient</h3>
+                                <h3 class="register-heading">New User Registration</h3>
                                 <form method="post" action="func2.php">
                                 <div class="row register-form">
                                     
@@ -113,7 +113,7 @@ function checklen()
                                                     <span>Female </span> 
                                                 </label>
                                             </div>
-                                            <a href="#">Already have an account?</a>
+                                            <a>Already have an account?</a>
                                             <br>
                                             <a href="index1.php" class="btn btn-primary">Login</a>
                                             <br>
