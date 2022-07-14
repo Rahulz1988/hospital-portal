@@ -10,6 +10,7 @@ if(isset($_POST['patsub1'])){
   $email=$_POST['email'];
   $contact=$_POST['contact'];
 	$password=$_POST['password'];
+  $cpassword=$_POST['cpassword'];
   $hash = password_hash($password, PASSWORD_DEFAULT);
   if($password==$cpassword){
   	$query="insert into patreg(fname,lname,gender,email,contact,password,cpassword) values ('$fname','$lname','$gender','$email','$contact','$hash','$hash');";
