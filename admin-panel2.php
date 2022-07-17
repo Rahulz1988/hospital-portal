@@ -579,11 +579,11 @@ if(isset($_POST['recsub1']))
                   <div class="col-md-8">
                    <select name="special" class="form-control" id="special" required="required">
                       <option value="head" name="spec" disabled selected>Select Specialization</option>
-                      <option value="General" name="spec">physician</option>
-                      <option value="Orthopedician" name="spec">Orthopedician</option>
-                      <option value="Neurologist" name="spec">Neurologist</option>
-                      <option value="Pediatrician" name="spec">Pediatrician</option>
-                      <option value="Stri roga and Prasutitantra" name="spec">Stri roga and Prasutitantra</option>
+                     
+                      <option value="Shalyatantra(Orthopedics & General Surgery)" name="spec">Shalyatantra(Orthopedics & General Surgery)</option>
+                      <option value="Swastavritta(Wellness Treatments & Yoga)" name="spec">Swastavritta(Wellness Treatments & Yoga)</option>
+                      <option value="Kayachikitsa(General Medicine)" name="spec">Kayachikitsa(General Medicine)</option>
+                      <option value="Striroga and Prasutitantra (Gynaecology & Obstetrics)" name="spec">Striroga and Prasutitantra (Gynaecology & Obstetrics)</option>
                     </select>
                     </div><br><br>
                   <div class="col-md-4"><label>Email ID:</label></div>
