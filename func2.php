@@ -23,8 +23,17 @@ if(isset($_POST['patsub1'])){
         $_SESSION['gender'] = $_POST['gender'];
         $_SESSION['contact'] = $_POST['contact'];
         $_SESSION['email'] = $_POST['email'];
+
+        $email=$_POST['email'];
+        $query = "select * from patreg where email='$email'";
+        $result = mysqli_query($con,$query);
+        $row=mysqli_fetch_array($result);
+        if($result){
+          $_SESSION['pid'] = $row['pid'];
+        }
+        
         header("Location:admin-panel.php");
-    } 
+    }
 
     $query1 = "select * from patreg;";
     $result1 = mysqli_query($con,$query1);
