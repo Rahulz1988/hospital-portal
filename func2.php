@@ -31,14 +31,8 @@ if(isset($_POST['patsub1'])){
         if($result){
           $_SESSION['pid'] = $row['pid'];
         }
-        
-        header("Location:admin-panel.php");
-    }
 
-    $query1 = "select * from patreg;";
-    $result1 = mysqli_query($con,$query1);
-    if($result1){
-      $_SESSION['pid'] = $row['pid'];
+        header("Location:admin-panel.php");
     }
 
   }
