@@ -1,7 +1,7 @@
 <?php
+//superadmin login
 error_reporting(0);
 ini_set('display_errors', 0);
-//superadmin login
 session_start();
 require_once 'db_conn.php';
 if(isset($_POST['adsub'])){
