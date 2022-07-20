@@ -33,14 +33,25 @@ ini_set('display_errors', 0);
             {
 	            $result=mysqli_query($con,$query2);
 	            $result=mysqli_query($con,$query3);
+                echo "<br><br><center>";
                 echo "Password changed successfully. <br>";
                 echo "<a href='index1.php'>Login</a>";
+                echo "</center>";
             }
             else
             {
+                echo "<br><br><center>";
                 echo "Invalid OTP <br>";
                 echo "<a href='javascript:history.back()'>Re-Enter OTP</a>";
+                echo "</center>";
             }
         }
+    }
+    else
+    {
+        echo "<br><br><center>";
+        echo "Account not found for the email address ".$email."<br>";
+        echo "<a href='reset-password.php'>Back</a>";
+        echo "</center>";
     }
 ?>
